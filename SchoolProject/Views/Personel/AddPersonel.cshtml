@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "AddPersonel";
+}
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Öğrenci Kayıt</h1>
+                <p style="color:red;font-size:20px">@TempData["Status"]</p>
+                <p>
+                    @using (Html.BeginForm("AddPersonel", "Personel", FormMethod.Post))
+                    {
+                        @Html.Label("Personel Ad Soyad:", new { @class = "form-label" })
+                        @Html.TextBox("AdSoyad", "", new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Personel Görevi:", new { @class = "form-label" })
+                        @Html.TextBox("Gorevi", "", new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Yönetim Tip:", new { @class = "form-label" })
+
+                        <select name="YonetimTip" class="form-select">
+                            <option value="11"> İdare </option>
+                            <option value="12"> Öğretmen </option>
+                            <option value="13"> Öğrenci İşleri </option>
+                        </select>
+
+                        <br />
+                        <button type="submit" class="btn btn-success">  Kaydet </button>
+                    }
+                </p>
+            </div>
+        </div>
+    </section>
+
+</main>
+

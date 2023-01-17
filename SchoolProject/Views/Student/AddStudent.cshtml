@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "AddStudent";
+}
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Öğrenci Kayıt</h1>
+                <p  style="color:red;font-size:20px">@TempData["Status"]</p>
+                <p>
+                    @using (Html.BeginForm("AddStudent","Student", FormMethod.Post))
+                    {
+                        @Html.Label("Öğrenci Ad Soyad:", new { @class = "form-label" })
+                        @Html.TextBox("AdSoyad", "", new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Öğrenci Numarası:", new { @class = "form-label" })
+                        @Html.TextBox("OgrenciNo", "", new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Öğrenci Bölüm:", new { @class = "form-label" })
+                        @Html.TextBox("Bolum", "", new { @class = "form-control" })
+                        <br />
+                        @Html.Label("Öğrenci Doğum Tarihi:", new { @class = "form-label" })
+                        <input type="date" name="DTarih" class="form-control"  />
+                        <br />
+                        <button type="submit" class="btn btn-success">  Kaydet </button>
+                    }
+                </p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+

@@ -1,0 +1,44 @@
+﻿@model SchoolProject.Models.StudentLessonModels
+@{
+    ViewBag.Title = "AddStudentLesson";
+}
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Ders Kayıt</h1>
+                <p style="color:red;font-size:20px">@TempData["Status"]</p>
+                <p>
+                    @using (Html.BeginForm("AddStudentLesson", "StudentLesson", FormMethod.Post))
+                    {
+
+
+                        @Html.Label("Ders Ad:", new { @class = "form-label" })
+
+                        <select name="DersId" class="form-select">
+                            @foreach (var item in Model.Dersler)
+                            {
+                                <option value="@item.Id"> @item.Ad </option>
+                            }
+                        </select>
+
+                        <br />
+
+                        @Html.Label("Öğrenci Ad:", new { @class = "form-label" })
+
+                        <select name="OgrenciId" class="form-select">
+                            @foreach (var item in Model.Ogrenciler)
+                            {
+                                <option value="@item.Id"> @item.AdSoyad </option>
+                            }
+                        </select>
+
+
+                        <button type="submit" class="btn btn-success">  Kaydet </button>
+                    }
+                </p>
+            </div>
+        </div>
+    </section>
+</main>

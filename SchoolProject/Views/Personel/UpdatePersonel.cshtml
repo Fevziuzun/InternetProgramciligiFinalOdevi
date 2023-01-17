@@ -1,0 +1,64 @@
+﻿@model SchoolProject.Models.PersonelModels
+@{
+    ViewBag.Title = "Update Personel";
+}
+
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Personel Güncelle</h1>
+                <p style="color:red;font-size:20px">@TempData["Status"]</p>
+                <p>
+                    @using (Html.BeginForm("UpdatePersonel", "Personel", FormMethod.Post))
+                    {
+                        @Html.Hidden("Id", Model.Personel.Id);
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        @Html.LabelFor(model => model.Personel.AdSoyad, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Personel.AdSoyad, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Personel.AdSoyad, "", new { @class = "text-danger" })
+                        <br />
+                        @Html.LabelFor(model => model.Personel.Gorevi, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Personel.Gorevi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Personel.Gorevi, "", new { @class = "text-danger" })
+                        <br />
+                        @Html.LabelFor(model => model.Personel.YonetimTip, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <select name="YonetimTip" class="form-select">
+                            @if (Model.Personel.YonetimTip == "11")
+                            {
+
+                                <option value="11"> İdare </option>
+                                <option value="12"> Öğretmen </option>
+                                <option value="13"> Öğrenci İşleri </option>
+                            }
+
+                            @if (Model.Personel.YonetimTip == "12")
+                            {
+                                <option value="12"> Öğretmen </option>
+                                <option value="11"> İdare </option>
+                                <option value="13"> Öğrenci İşleri </option>
+                            }
+
+                            @if (Model.Personel.YonetimTip == "13")
+                            {
+                                <option value="13"> Öğrenci İşleri </option>
+                                <option value="11"> İdare </option>
+                                <option value="12"> Öğretmen </option>
+                            }
+
+                        </select>
+
+                        <br />
+
+                        <button type="submit" class="btn btn-success">  Kaydet </button>
+                    }
+                </p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
